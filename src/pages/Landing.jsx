@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { getNumberOfJobs } from "../utils/fetchData";
 // images
 import logo from "../assets/svg/logo.svg";
+// import Navigat
+// ion from "../components/Navigation";
 import dungi from "../assets/svg/dungi.svg";
 // racheta
 import racheta from "../assets/svg/racheta.svg";
@@ -60,6 +62,7 @@ const Landing = () => {
       <nav className="w-[80%] md:w-[80%] border-b border-border_grey">
         <img src={logo} alt="peviitor-logo" />
       </nav>
+
       <main className="w-[70%] gap-y-10 flex flex-wrap justify-center xs:gap-0 sm:gap-0 md:gap-2 lg:gap-0 items-center sm:items-start mt-[8em] mb-[10em] font-PoppinsRegular text-left">
         <div className="order-1">
           <div className="relative w-[300px] md:w-[486px] lg:w-[340px] xl:w-[486px]">

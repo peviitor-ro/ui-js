@@ -1,18 +1,37 @@
-import React,  { useEffect } from "react";
+import React,  { useEffect, useState } from "react";
 import HomeLink from "../components/CustomLinks";
 import Layout from "../components/Layout";
+import Navigation from "../components/Navigation";
+import Button from "../components/Button";
+import scrollUpOrange from "../assets/svg/scroll-up-orange.svg";
 
 const Privacy = () => {
+    const [isVisible, setIsVisible] = useState(false);
+
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
+    useEffect(() => {
+        const checkScrollHeight = () => {
+          setIsVisible(window.scrollY > 500);
+        };
+        window.addEventListener("scroll", checkScrollHeight);
+    
+        return () => window.removeEventListener("scroll", checkScrollHeight);
+    }, []);
+
+    function handleScrollToTop() {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
     return (
         <Layout>
+            <Navigation navType="orange" />
             <header
                 role="banner"
                 className="font-PoppinsRegular w-full flex items-center justify-center flex-wrap flex-col py-16 md:py-24 lg:py-32 leading-[110%] bg-[radial-gradient(circle,_rgba(243,120,29,1)_77%,_rgba(255,106,106,1)_100%)]">
-                <h1 className="leading-[62px] text-white text-[40px] md:text-[44px] xl:text-[60px] font-semibold mb-2 text-center">
+                <h1 className="tracking-[1px] text-white text-[40px] md:text-[44px] mb-2 xl:text-[60px] font-semibold  text-center">
                     Confidențialitate
                 </h1>
             </header>
@@ -253,6 +272,14 @@ const Privacy = () => {
                     </ol>
                 </section>           
             </article>
+
+            <Button
+                buttonType="scrollToTop"
+                className={`${isVisible ? "opacity-100 pointer-events-auto" : ""}`}
+                onClick={handleScrollToTop}
+            >
+                <img src={scrollUpOrange} alt="scroll-up" />
+            </Button>
         </Layout>
     );
 };
