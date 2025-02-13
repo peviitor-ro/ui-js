@@ -108,6 +108,10 @@ const Search = () => {
   }, [contextSetQ, contextSetCity, location.pathname, location.search]);
   // useEffect to load the number of company and jobs
   useEffect(() => {
+    if (!location.pathname.includes("/rezultate")) {
+      return;
+    }
+
     const numbersInfo = async () => {
       const companyNumber = await getNumberOfCompany();
       dispatch(setNumberOfCompany(companyNumber));
@@ -235,16 +239,16 @@ const Search = () => {
     screenWidth >= 740 && screenWidth <= 767
       ? setH2Width(300)
       : setH2Width(
-          (Math.floor((screenWidth - gap * 4 - cardWidth) / (cardWidth + gap)) +
-            1) *
-            cardWidth +
-            (Math.floor(
-              (screenWidth - gap * 4 - cardWidth) / (cardWidth + gap)
-            ) +
-              1 -
-              1) *
-              gap
-        );
+        (Math.floor((screenWidth - gap * 4 - cardWidth) / (cardWidth + gap)) +
+          1) *
+        cardWidth +
+        (Math.floor(
+          (screenWidth - gap * 4 - cardWidth) / (cardWidth + gap)
+        ) +
+          1 -
+          1) *
+        gap
+      );
   };
 
   useEffect(() => {
@@ -276,21 +280,18 @@ const Search = () => {
         alignItems: "center",
         width: "100%"
       }}
-      className={`${
-        location.pathname === "/rezultate" ? "md:flex-row lg:flex-row" : ""
-      }`}
+      className={`${location.pathname === "/rezultate" ? "md:flex-row lg:flex-row" : ""
+        }`}
     >
       <div
         className={`flex items-center justify-beetween flex-col mt-5 gap-2 lg:gap-0 lg:flex-row
-          ${
-            location.pathname === "/"
-              ? "w-[100%] mt-0 md:flex-col sm:items-center sm:flex-col sm:items-center"
-              : ""
+          ${location.pathname === "/"
+            ? "w-[100%] mt-0 md:flex-col sm:items-center sm:flex-col sm:items-center"
+            : ""
           }
-          ${
-            location.pathname === "/rezultate"
-              ? "md:justify-center  w-[80%] md:w-[80%] lg:justify-between 2xl:w-[80%]"
-              : ""
+          ${location.pathname === "/rezultate"
+            ? "md:justify-center  w-[80%] md:w-[80%] lg:justify-between 2xl:w-[80%]"
+            : ""
           }`}
       >
         {location.pathname === "/rezultate" && (
@@ -302,37 +303,33 @@ const Search = () => {
           onSubmit={handleUpdateQ}
           className={`flex flex-col items-center relative  lg:justify-between lg:mt-0 lg:gap-0 lg:flex-row  max-w-full
                 ${location.pathname === "/" ? "gap-2 mt-4 md:gap-2" : ""}
-                ${
-                  location.pathname === "/rezultate"
-                    ? "w-full gap-1 sm:justify-center sm:w-auto md:justify-center md:items-center md:w-[90%]"
-                    : ""
-                }`}
+                ${location.pathname === "/rezultate"
+              ? "w-full gap-1 sm:justify-center sm:w-auto md:justify-center md:items-center md:w-[90%]"
+              : ""
+            }`}
         >
           <div
             className={`flex items-center justify-between rounded-full w-[300px] md:w-[480px] lg:w-[340px] 
                 ${location.pathname === "/" ? "relative xl:w-[485px] " : ""}
-                ${
-                  location.pathname === "/rezultate"
-                    ? "sm:flex-col sm:w-[400px] md:w-[580px] 2xl:w-[90%] lg:w-[90%]"
-                    : ""
-                }`}
+                ${location.pathname === "/rezultate"
+                ? "sm:flex-col sm:w-[400px] md:w-[580px] 2xl:w-[90%] lg:w-[90%]"
+                : ""
+              }`}
           >
             {/* Job Title Input */}
             <div
               className={`flex items-center relative w-full border border-[#89969C] bg-white rounded-full h-[54px]
     ${location.pathname === "/rezultate" ? "w-full" : ""}
-    ${
-      location.pathname !== "/"
-        ? "lg:border-r-2 border-[#89969C] " // Border pe dreapta pe orice pagină, nu doar pe "/"
-        : "lg:border-r-0 lg:rounded-tr-none lg:rounded-br-none divider" // Adaugă divider doar pe paginile care nu sunt "/"
-    } 
-    ${
-      focusedInput === "jobTitle" &&
-      text.length >= 3 &&
-      location.pathname === "/"
-        ? "lg:border-b-[#eeeeee] lg:rounded-bl-none"
-        : ""
-    }`}
+    ${location.pathname !== "/"
+                  ? "lg:border-r-2 border-[#89969C] " // Border pe dreapta pe orice pagină, nu doar pe "/"
+                  : "lg:border-r-0 lg:rounded-tr-none lg:rounded-br-none divider" // Adaugă divider doar pe paginile care nu sunt "/"
+                } 
+    ${focusedInput === "jobTitle" &&
+                  text.length >= 3 &&
+                  location.pathname === "/"
+                  ? "lg:border-b-[#eeeeee] lg:rounded-bl-none"
+                  : ""
+                }`}
             >
               <FlagMagnifyGlass className="ml-5" />
               <input
@@ -361,9 +358,8 @@ const Search = () => {
                     jobSuggestions.map((suggestion, index) => (
                       <li
                         key={index}
-                        className={`px-12 py-2 cursor-pointer ${
-                          index % 2 === 0 ? "bg-custom-gray" : "bg-white"
-                        } hover:bg-gray-200`}
+                        className={`px-12 py-2 cursor-pointer ${index % 2 === 0 ? "bg-custom-gray" : "bg-white"
+                          } hover:bg-gray-200`}
                         onMouseDown={() => {
                           setText(suggestion.term);
                           setFocusedInput(null);
@@ -380,15 +376,14 @@ const Search = () => {
               focusedInput === "jobTitle" &&
               text.length >= 3 && (
                 <ul className="hidden lg:block lg:absolute lg:left-0 lg:w-full lg:border lg:border-t-0 border-[#89969C] lg:rounded-3xl lg:rounded-t-none p-0 lg:mt-4 lg:max-h-[150px] lg:overflow-y-scroll custom-scrollbar lg:bottom-0 lg:transform lg:translate-y-full lg:box-border">
-                  {}
+                  { }
                   {jobSuggestions &&
                     jobSuggestions.length > 0 &&
                     jobSuggestions.map((suggestion, index) => (
                       <li
                         key={index}
-                        className={`px-12 py-2 cursor-pointer ${
-                          index % 2 === 0 ? "bg-custom-gray" : "bg-white"
-                        } hover:bg-gray-200`}
+                        className={`px-12 py-2 cursor-pointer ${index % 2 === 0 ? "bg-custom-gray" : "bg-white"
+                          } hover:bg-gray-200`}
                         onMouseDown={() => {
                           setText(suggestion.term);
                           setFocusedInput(null);
@@ -410,11 +405,10 @@ const Search = () => {
                 <div
                   style={{ height: "54px" }}
                   className={`flex items-center  relative w-full border border-[#89969C] bg-white rounded-full  lg:border-l-0 lg:rounded-tl-none lg:rounded-bl-none
-                      ${
-                        focusedInput === "location"
-                          ? "lg:border-b-[#eeeeee] lg:rounded-br-none"
-                          : ""
-                      }`}
+                      ${focusedInput === "location"
+                      ? "lg:border-b-[#eeeeee] lg:rounded-br-none"
+                      : ""
+                    }`}
                 >
                   <MapPinIcon className="w-6 h-6 text-gray-500 ml-5" />
                   <input
@@ -442,9 +436,8 @@ const Search = () => {
                     {filteredCities.map((suggestion, index) => (
                       <li
                         key={index}
-                        className={`px-12 py-2 cursor-pointer ${
-                          index % 2 === 0 ? "bg-custom-gray" : "bg-white"
-                        } hover:bg-gray-200`}
+                        className={`px-12 py-2 cursor-pointer ${index % 2 === 0 ? "bg-custom-gray" : "bg-white"
+                          } hover:bg-gray-200`}
                         onClick={() => {
                           setLocation(suggestion);
                           setFocusedInput(null); // Close dropdown on selection
