@@ -32,6 +32,9 @@ module.exports = {
         hover_card_shadow: "0px 1px 2px 0px #0000004d",
         button_shadow: "0px 5px 5px 0px #00000040 inset",
         checbox_shadow: "0px 4px 14px 0px #0000001a;"
+      },
+      backdropBlur: {
+        custom: "8.9px"
       }
     }
   },

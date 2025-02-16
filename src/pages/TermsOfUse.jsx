@@ -1,6 +1,7 @@
 import React,  { useEffect } from "react";
 import HomeLink from "../components/CustomLinks";
 import Layout from "../components/Layout";
+import Navigation from "../components/Navigation";
 
 const TermsOfUse = () => {
     useEffect(() => {
@@ -9,12 +10,23 @@ const TermsOfUse = () => {
 
     return (
         <Layout>
+            <Navigation navType="green"/>
             <header
                 role="banner"
-                className="font-PoppinsRegular w-full flex items-center justify-center flex-wrap flex-col py-16 md:py-24 lg:py-32 leading-[110%] bg-[radial-gradient(circle,_rgba(4,138,129,1)_19%,_rgba(40,83,107,1)_100%)]">
-                <h1 className="leading-[62px] text-white text-[40px] md:text-[44px] xl:text-[60px] font-semibold mb-2 text-center">
+                // className="font-PoppinsRegular w-full flex items-center justify-center flex-wrap flex-col py-16 md:py-24 lg:py-32 leading-[110%] bg-[radial-gradient(circle,_rgba(4,138,129,1)_19%,_rgba(40,83,107,1)_100%)]">
+                className="font-PoppinsRegular w-full flex justify-center flex-wrap flex-col py-16 md:py-24 lg:py-32 leading-[110%] bg-[radial-gradient(circle,_rgba(4,138,129,1)_19%,_rgba(40,83,107,1)_100%)]">
+                
+                {/* <Navigation/> */}
+                <div className="items-center justify-center">
+                  
+                    <h1 className="leading-[62px] text-white text-[40px] md:text-[44px] xl:text-[60px] font-semibold mb-2 text-center">
+                        Condiții de utilizare
+                    </h1>
+                </div>
+
+                {/* <h1 className="leading-[62px] text-white text-[40px] md:text-[44px] xl:text-[60px] font-semibold mb-2 text-center">
                     Condiții de utilizare
-                </h1>
+                </h1> */}
             </header>
     
             <article className="font-PoppinsRegular flex flex-col w-full">
